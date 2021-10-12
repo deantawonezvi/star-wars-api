@@ -1,4 +1,19 @@
-import { Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Person } from './entities/person.model';
+import { Inject } from '@nestjs/common';
+import { PeopleService } from './people.service';
 
 @Resolver()
-export class PeopleResolver {}
+export class PeopleResolver {
+  constructor(@Inject(PeopleService) private peopleService: PeopleService) {}
+
+  @Query((returns) => Person)
+  async person(@Args('id') id: string): Promise<Person> {
+    return await this.peopleService.findOne(id);
+  }
+
+  @Query((returns) => [Person])
+  async people(): Promise<Person[]> {
+    return await this.peopleService.findAll();
+  }
+}
