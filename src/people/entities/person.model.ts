@@ -5,8 +5,8 @@ export class Person {
   @Field()
   name: string;
 
-  @Field(() => Int)
-  height: number;
+  @Field()
+  height: string;
 
   @Field(() => Int)
   mass: number;

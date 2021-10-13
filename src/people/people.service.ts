@@ -25,7 +25,7 @@ export class PeopleService {
     return response.data.results[0];
   }
 
-  async findAll(page) {
+  async findAll(page = 1) {
     const baseUrl = configService.getValue('BASE_URL');
 
     const response = await this.httpService
