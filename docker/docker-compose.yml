@@ -7,8 +7,6 @@ services:
     image: ghcr.io/deantawonezvi/star-wars-api:${BRANCH}-${APP_VERSION}
     networks:
       - proxy
-    expose:
-      - 3000
     labels:
       ##- traefik.http.routers.star-wars-api.rule=Host(`star-wars-api.deant.work`) || Host(`www.star-wars-api.deant.work`)
       ##Set the lowest routing priority == 1

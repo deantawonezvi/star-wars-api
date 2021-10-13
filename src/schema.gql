@@ -12,5 +12,8 @@ type Person {
 
 type Query {
   person(name: String!): Person!
-  people(page: Float): [Person!]!
+  people(
+    """All Star Wars People"""
+    page: Float
+  ): [Person!]!
 }

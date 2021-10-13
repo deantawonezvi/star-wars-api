@@ -14,7 +14,8 @@ export class PeopleResolver {
 
   @Query((returns) => [Person])
   async people(
-    @Args('page', { nullable: true }) page: number,
+    @Args('page', { nullable: true, description: 'All Star Wars People' })
+    page: number,
   ): Promise<Person[]> {
     return await this.peopleService.findAll(page);
   }
