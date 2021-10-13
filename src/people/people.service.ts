@@ -25,11 +25,11 @@ export class PeopleService {
     return response.data.results[0];
   }
 
-  async findAll() {
+  async findAll(page) {
     const baseUrl = configService.getValue('BASE_URL');
 
     const response = await this.httpService
-      .get(`${baseUrl}/people`)
+      .get(`${baseUrl}/people?page=${page}`)
       .toPromise();
 
     return response.data.results;

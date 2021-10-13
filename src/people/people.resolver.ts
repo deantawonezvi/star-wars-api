@@ -13,7 +13,9 @@ export class PeopleResolver {
   }
 
   @Query((returns) => [Person])
-  async people(): Promise<Person[]> {
-    return await this.peopleService.findAll();
+  async people(
+    @Args('page', { nullable: true }) page: number,
+  ): Promise<Person[]> {
+    return await this.peopleService.findAll(page);
   }
 }
