@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Person {
+  name: String!
+  height: Int!
+  mass: Int!
+  gender: String!
+  homeworld: String!
+}
+
+type Query {
+  person(name: String!): Person!
+  people: [Person!]!
+}
