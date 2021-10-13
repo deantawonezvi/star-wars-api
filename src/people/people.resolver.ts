@@ -8,8 +8,8 @@ export class PeopleResolver {
   constructor(@Inject(PeopleService) private peopleService: PeopleService) {}
 
   @Query((returns) => Person)
-  async person(@Args('id') id: string): Promise<Person> {
-    return await this.peopleService.findOne(id);
+  async person(@Args('name') name: string): Promise<Person> {
+    return await this.peopleService.findByName(name);
   }
 
   @Query((returns) => [Person])

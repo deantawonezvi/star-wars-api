@@ -15,12 +15,23 @@ export class PeopleService {
     return response.data;
   }
 
+  async findByName(name: string) {
+    const baseUrl = configService.getValue('BASE_URL');
+
+    const response = await this.httpService
+      .get(`${baseUrl}/people?search=${name}`)
+      .toPromise();
+
+    return response.data.results[0];
+  }
+
   async findAll() {
     const baseUrl = configService.getValue('BASE_URL');
 
     const response = await this.httpService
       .get(`${baseUrl}/people`)
       .toPromise();
+
     return response.data.results;
   }
 }
