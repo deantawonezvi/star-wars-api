@@ -4,13 +4,13 @@
 
 type Person {
   name: String!
-  height: Int!
-  mass: Int!
+  height: String!
+  mass: String!
   gender: String!
   homeworld: String!
 }
 
 type Query {
   person(name: String!): Person!
-  people: [Person!]!
+  people(page: Float): [Person!]!
 }
