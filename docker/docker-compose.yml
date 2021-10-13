@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  star-wars-api:
+    container_name: star-wars-api
+    restart: unless-stopped
+    image: ghcr.io/deantawonezvi/star-wars-api:${BRANCH}-${APP_VERSION}
+    networks:
+      - proxy
+    expose:
+      - 3000
+    labels:
+      ##- traefik.http.routers.star-wars-api.rule=Host(`star-wars-api.deant.work`) || Host(`www.star-wars-api.deant.work`)
+      ##Set the lowest routing priority == 1
+      ##This will solve the overlap with api routes
+      ##- traefik.http.routers.star-wars-api.priority=1
+      ##HTTPS
+      - "traefik.enable=true"
+      - "traefik.http.routers.star-wars-api.entrypoints=websecure"
+      - "traefik.http.routers.star-wars-api.rule=Host(`star-wars-api.deant.work`)"
+      - "traefik.http.middlewares.star-wars-api-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.star-wars-api-secure.entrypoints=websecure"
+      - "traefik.http.routers.star-wars-api-secure.rule=Host(`star-wars-api.deant.work`)"
+      - "traefik.http.routers.star-wars-api-secure.tls=true"
+      - "traefik.http.routers.star-wars-api-secure.tls.certresolver=http"
+      - "traefik.docker.network=proxy"
+    env_file:
+      - .env
+
+networks:
+  proxy:
+    external: true
