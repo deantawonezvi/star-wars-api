@@ -22,6 +22,15 @@ export class PeopleService {
       .get(`${baseUrl}/people?search=${name}`)
       .toPromise();
 
+    const search_result = response.data.results[0];
+
+    if (search_result.homeworld != 'unknown') {
+      const home_world_response = await this.httpService
+        .get(search_result.homeworld)
+        .toPromise();
+      search_result.homeworld = home_world_response.data.name;
+    }
+
     return response.data.results[0];
   }
 
