@@ -5,21 +5,19 @@ import { HttpService } from '@nestjs/axios';
 @Injectable()
 export class PeopleService {
   constructor(private httpService: HttpService) {}
-  async findOne(id: string) {
-    const baseUrl = configService.getValue('BASE_URL');
+  private baseUrl = configService.getValue('BASE_URL');
 
+  async findOne(id: string) {
     const response = await this.httpService
-      .get(`${baseUrl}/people/${id}`)
+      .get(`${this.baseUrl}/people/${id}`)
       .toPromise();
 
     return response.data;
   }
 
   async findByName(name: string) {
-    const baseUrl = configService.getValue('BASE_URL');
-
     const response = await this.httpService
-      .get(`${baseUrl}/people?search=${name}`)
+      .get(`${this.baseUrl}/people?search=${name}`)
       .toPromise();
 
     const search_result = response.data.results[0];
@@ -35,10 +33,8 @@ export class PeopleService {
   }
 
   async findAll(page = 1) {
-    const baseUrl = configService.getValue('BASE_URL');
-
     const response = await this.httpService
-      .get(`${baseUrl}/people?page=${page}`)
+      .get(`${this.baseUrl}/people?page=${page}`)
       .toPromise();
 
     return response.data.results;
