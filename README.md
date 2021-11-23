@@ -10,7 +10,7 @@
 
 
 
-**GitHub Container Registry:`ghcr.io/deantawonezvi/star-wars-api:0.0.8`**
+**GitHub Container Registry:`ghcr.io/deantawonezvi/star-wars-api:0.0.9`**
 
 </div>
 
