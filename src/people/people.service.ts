@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { configService } from '../config/config.service';
-import { HttpService } from '@nestjs/axios';
+import { Injectable } from "@nestjs/common";
+import { configService } from "../config/config.service";
+import { HttpService } from "@nestjs/axios";
 
 @Injectable()
 export class PeopleService {
@@ -15,7 +15,7 @@ export class PeopleService {
     return response.data;
   }
 
-  async findByName(name: string) {
+  async findPerson(name: string) {
     const response = await this.httpService
       .get(`${this.baseUrl}/people?search=${name}`)
       .toPromise();
@@ -30,6 +30,15 @@ export class PeopleService {
     }
 
     return response.data.results[0];
+  }
+
+  async findPeople(name: string) {
+    const response = await this.httpService
+      .get(`${this.baseUrl}/people?search=${name}`)
+      .toPromise();
+
+    return response.data.results;
+
   }
 
   async findAll(page = 1) {

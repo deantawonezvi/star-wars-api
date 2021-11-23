@@ -13,4 +13,5 @@ type Person {
 type Query {
   person(name: String!): Person!
   people(page: Float): [Person!]!
+  peopleByKeyWord(name: String!): [Person!]!
 }
