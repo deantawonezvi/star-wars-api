@@ -11,4 +11,5 @@ FROM node:lts-alpine
 RUN apk --no-cache add curl
 WORKDIR /app
 COPY --from=builder /app ./
+EXPOSE 3002
 CMD ["npm", "run", "start:prod"]
