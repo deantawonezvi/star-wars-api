@@ -6,7 +6,7 @@
 
 **Playground: https://star-wars-api.deant.work/graphql**
 
-**Client: https://star-wars.deant.work**
+**Client: https://star-wars-search.deant.work**
 
 
 
