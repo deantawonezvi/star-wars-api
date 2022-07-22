@@ -3,10 +3,10 @@ node {
    def branch = 'master'
    def version
    def sshKeyId = 'ssh_dev'
-   def deploymentServer = 'dean@deant.work'
+   def deploymentServer = 'root@deant.work'
    def serviceName = 'star-wars-api'
    def deploymentPath = "/opt/apps/${serviceName}"
-   def githubCredentials = 'githubCredentials'
+   def githubCredentials = 'githubToken'
    def dockerRegistry = "ghcr.io/deantawonezvi/star-wars-api"
    def slackToken = "slackToken"
 try {
